@@ -6,18 +6,20 @@ export default Controller.extend({
   isAddingBand: false,
   newBandName: '',
 
-  isAddButtonDisabled: empty('neyBandName'),
+  isAddButtonDisabled: empty('newBandName'),
 
   actions: {
     addBand() {
-      this.toggleProperty('isAddingBand');
+      this.set('isAddingBand', true);
     },
 
     cancelAddBand() {
       this.set('isAddingBand', false);
     },
 
-    saveBand() {
+    saveBand(event) {
+      event.preventDefault();
+
       let newBand = Band.create({ name: this.newBandName });
 
       this.model.pushObject(newBand);
