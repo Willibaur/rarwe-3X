@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import Band from '../models/band';
+import Band from 'rarwe3/models/band';
 import { empty } from '@ember/object/computed';
 
 export default Controller.extend({

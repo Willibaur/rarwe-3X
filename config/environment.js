@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'rarwe-3-x',
+    modulePrefix: 'rarwe3',
     environment,
     rootURL: '/',
     locationType: 'auto',

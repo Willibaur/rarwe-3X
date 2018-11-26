@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { A } from '@ember/array';
-import Band from '../models/band';
-import Song from '../models/song';
+import Band from 'rarwe3/models/band';
+import Song from 'rarwe3/models/song';
 
 export default Route.extend({
   model() {
