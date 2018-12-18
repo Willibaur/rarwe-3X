@@ -26,10 +26,8 @@ export default Controller.extend({
       this.set('newSongTitle', '');
     },
 
-    updateRating(params) {
-      let { item: song, rating } = params;
-
-      song.set('rating', rating)
+    updateRating(song, rating) {
+      song.set('rating', song.rating === rating ? 0 : rating)
     },
   }
 });
