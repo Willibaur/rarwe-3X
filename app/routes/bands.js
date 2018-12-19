@@ -29,9 +29,23 @@ export default Route.extend({
       rating: 5
     });
 
-    let ledZeppelin = Band.create({ name: 'Led Zeppelin', songs: A([blackDog]) });
-    let pearlJam = Band.create({ name: 'Pearl Jam', songs: A([yellowLedbetter, daughter]) });
-    let fooFighters = Band.create({ name: 'Foo Fighters', songs: A([pretender]) });
+    // Create Bands objects
+    let ledZeppelin = Band.create({
+      name: 'Led Zeppelin',
+      songs: A([blackDog])
+    });
+
+    let pearlJam = Band.create({
+      name: 'Pearl Jam',
+      description: 'Perl Jam is an American rock band, formed in Seattle, Washington in 1990.',
+      songs: A([yellowLedbetter, daughter])
+    });
+
+    let fooFighters = Band.create({
+      name: 'Foo Fighters',
+      songs: A([pretender])
+    });
+
 
     return [ledZeppelin, pearlJam, fooFighters];
   }

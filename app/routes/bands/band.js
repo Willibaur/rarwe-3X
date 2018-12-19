@@ -5,5 +5,5 @@ export default Route.extend({
     let bands = this.modelFor('bands');
 
     return bands.findBy('slug', params.slug);
-  }
+  },
 });
