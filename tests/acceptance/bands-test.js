@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
-import { visit, click, fillIn } from '@ember/test-helpers';
+import { visit } from '@ember/test-helpers';
+import { createBand } from '../helpers/custom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirageTest from 'ember-cli-mirage/test-support/setup-mirage';
 
@@ -24,9 +25,7 @@ module('Acceptance | Bands', function(hooks) {
     this.server.create('band', { name: 'Royal Blood' });
 
     await visit('/');
-    await click('[data-test-rr=new-band-label]');
-    await fillIn('[data-test-rr=new-band-input]', 'Caspian');
-    await click('[data-test-rr=new-band-button]');
+    await createBand('Caspian');
 
     assert.dom('[data-test-rr=band-list-item]').exists({ count: 2 }, 'A new band link is rendered');
     assert.dom('[data-test-rr=band-list-item]:last-child')
