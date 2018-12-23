@@ -11,7 +11,7 @@ export default Component.extend({
   stars: computed('rating', 'maxRating', function() {
     let stars = [];
 
-    for (let i = 0; i <= this.maxRating; i++) {
+    for (let i = 1; i <= this.maxRating; i++) {
       stars.push({ rating: i, isFull: this.rating >= i })
     }
 
