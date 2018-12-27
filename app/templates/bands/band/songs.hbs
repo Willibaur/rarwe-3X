@@ -19,7 +19,7 @@
     <button
       class="rr-sort-button"
       data-test-rr="sort-by-title-desc"
-      onclick={{action "updateSortBy" "titleDesc"}}
+      onclick={{action (mut sortBy) "titleDesc"}}
     >
       Title
       {{fa-icon "angle-down"}}

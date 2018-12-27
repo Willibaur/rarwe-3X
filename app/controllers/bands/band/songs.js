@@ -47,9 +47,5 @@ export default Controller.extend({
 
       return song.save();
     },
-
-    updateSortBy(sortBy) {
-      this.set('sortBy', sortBy);
-    }
   }
 });
