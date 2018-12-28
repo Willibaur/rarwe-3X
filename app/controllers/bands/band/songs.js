@@ -14,7 +14,9 @@ export default Controller.extend({
   searchTerm: '',
   sortBy: 'ratingDesc',
 
-  sortProperties: computed('sortBy', function() {
+  sortedSongs: sort('matchingSongs', 'sortProperties'),
+
+  sortProperties: computed('sortBy', function () {
     let options = {
       ratingDesc: ['rating:desc', 'title:asc'],
       ratingAsc:  ['rating:asc', 'title:asc'],
@@ -24,8 +26,6 @@ export default Controller.extend({
 
     return options[this.sortBy];
   }),
-
-  sortedSongs: sort('matchingSongs', 'sortProperties'),
 
   matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
     let searchTerm = this.searchTerm.toLowerCase();
