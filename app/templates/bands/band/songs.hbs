@@ -33,6 +33,17 @@
       {{fa-icon "angle-up"}}
     </button>
   </div>
+
+  <div class="rr-search-panel">
+    {{input
+      type="text"
+      class="rr-input"
+      value=searchTerm
+      data-test-rr="search-box"
+    }}
+
+    <button type="text" class="rr-search-button">{{fa-icon "search"}}</button>
+  </div>
 </div>
 
 <ul class="rr-list">

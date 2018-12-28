@@ -3,10 +3,11 @@ import { empty, sort } from '@ember/object/computed';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
+  isAddButtonDisabled: empty('newSongTitle'),
   isAddingSong: false,
   newSongTitle: '',
+  searchTerm: '',
   sortBy: 'ratingDesc',
-  isAddButtonDisabled: empty('newSongTitle'),
 
   sortProperties: computed('sortBy', function() {
     let options = {
@@ -19,7 +20,15 @@ export default Controller.extend({
     return options[this.sortBy];
   }),
 
-  sortedSongs: sort('model.songs', 'sortProperties'),
+  sortedSongs: sort('matchingSongs', 'sortProperties'),
+
+  matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
+    let searchTerm = this.searchTerm.toLowerCase();
+
+    return this.model.get('songs').filter((song) => {
+      return song.title.toLowerCase().includes(searchTerm);
+    });
+  }),
 
   actions: {
     addSong() {
