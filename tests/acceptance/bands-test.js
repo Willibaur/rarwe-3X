@@ -43,21 +43,32 @@ module('Acceptance | Bands', function(hooks) {
     this.server.create('song', { title: 'Spinning in Daffodils', rating: 5, band });
 
     await visit('/');
-    await click('[data-test-rr=band-link]');
 
+
+    await click('[data-test-rr=band-link]');
     assert.equal(currentURL(), '/bands/1/songs', 'Query params includes songs');
     assert.dom('[data-test-rr=song-list-item]:first-child')
       .hasText('Elephants', 'The first song is the highest ranked, first one in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child')
       .hasText('New Fang', 'The last song is the lowest ranked, last one in the alphabet');
 
-    await click('[data-test-rr=sort-by-title-desc]');
 
+    await click('[data-test-rr=sort-by-title-desc]');
     assert.equal(currentURL(), '/bands/1/songs?sort=titleDesc', 'Query params includes sort');
     assert.dom('[data-test-rr=song-list-item]:first-child')
-      .hasText('Spinning in Daffodils', 'The first song is the one that comes last in the alphabet');
+      .hasText('Spinning In Daffodils', 'The first song is the one that comes last in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child')
       .hasText('Elephants', 'The last song is the one that comes first in the alphabet');
+
+
+    await click('[data-test-rr=sort-by-title-asc]');
+    assert.dom('[data-test-rr=song-list-item]:last-child')
+      .hasText('Spinning In Daffodils', 'The last song is the one that comes last in the alphabet');
+
+
+    await click('[data-test-rr=sort-by-rating-asc]');
+    assert.dom('[data-test-rr=song-list-item]:last-child')
+      .hasText('Spinning In Daffodils', 'The last song is the highest ranked, last one in the alphabet');
   });
 
   test('Search songs', async function (assert) {
