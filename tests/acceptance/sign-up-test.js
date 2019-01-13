@@ -13,6 +13,6 @@ module('Acceptance | sign up', function(hooks) {
     await fillIn('#password', 'ThemCr00ked!');
     await click('[data-test-rr=sign-up-button]');
 
-    assert.dom('[data-test rr=form-header]').hasText('Log in to R&R', "User is redirected to log in");
+    assert.dom('[data-test-rr=form-header]').hasText('Log in to R&R', "User is redirected to log in");
   });
 });
